@@ -236,9 +236,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+
             return;
+
+
         }
         mMap.setMyLocationEnabled(true);
+
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(lat, longt);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));

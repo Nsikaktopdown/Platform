@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +35,8 @@ import com.pies.platform.custom.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ng.com.pies.SubmitApplication;
 
 public class Home extends AppCompatActivity {
     private List<Admin_Item> movieList = new ArrayList<>();
@@ -53,6 +56,13 @@ public class Home extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Button button = (Button) findViewById(R.id.login);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Login.class));
+            }
+        });
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         collapsingToolbarLayout.setTitle("");
@@ -60,6 +70,7 @@ public class Home extends AppCompatActivity {
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mAuth.getCurrentUser();
         // [START auth_state_listener]
 
 
@@ -102,19 +113,23 @@ public class Home extends AppCompatActivity {
         recyclerView2.addOnItemTouchListener(new Admin_dashboard.RecyclerTouchListener(getApplicationContext(), recyclerView2, new Admin_dashboard.ClickListener() {
             @Override
             public void onClick(View view, int position) {
+                Admin_Item item = movieList.get(position);
+                String name = item.getTitleName();
 
-                if(position == 0){
+                if(name.equals("Dashboard")){
                     startActivity(new Intent(getApplicationContext(), Verification.class));
                 }
-                else if(position == 1){
+                else if(name.equals("Submit Application")){
+                    startActivity(new Intent(getApplicationContext(), SubmitApplication.class));
 
                 }
-                else if(position == 2){
+                else if(name.equals("Home Tutor Request")){
                     startActivity(new Intent(getApplicationContext(),Teacher_Request.class));
                 }
-                else if (position== 4){
+                else if (name.equals("Contact Us")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
-                    builder.setMessage("You can contact us via this email address  aniekanpaul@gmail.com"  )
+                    builder.setMessage("You can contact us via this email address:  aniekanpaul@gmail.com \n " +
+                            "Phone: 09036274418")
                             .setTitle("Contact")
                             .setCancelable(false)
                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -140,13 +155,12 @@ new Ui().execute();
     }
 
     private void prepareMovieData() {
-        Admin_Item manager = new Admin_Item("Dashboard", "","Click to Perform More Task ", getResources().getDrawable(R.drawable.y));
+
+
+        Admin_Item manager = new Admin_Item("News Feeds","Coming Soon", " Get Lastest News Update", getResources().getDrawable(R.drawable.fd));
         movieList.add(manager);
 
-        manager = new Admin_Item("News Feeds","Coming Soon", " Get Lastest News Update", getResources().getDrawable(R.drawable.fd));
-        movieList.add(manager);
-
-        manager = new Admin_Item("Teacher Request ","", "Request for a teacher ", getResources().getDrawable(R.drawable.request));
+        manager = new Admin_Item("Home Tutor Request","", "Request for a Home Tutor ", getResources().getDrawable(R.drawable.request));
         movieList.add(manager);
 
         manager = new Admin_Item("Submit Application","", "Eligible teacher should submit their application", getResources().getDrawable(R.drawable.apl));
@@ -157,7 +171,12 @@ new Ui().execute();
 
         mAdapter.notifyDataSetChanged();
     }
+private void adminPart(){
+               Admin_Item manager = new Admin_Item("Dashboard", "","Click to Perform More Task ", getResources().getDrawable(R.drawable.y));
+        movieList.add(manager);
+    mAdapter.notifyDataSetChanged();
 
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,6 +223,10 @@ startActivity(new Intent(getApplicationContext(),Login.class));
                     });
             AlertDialog dialog = builder.create();
             dialog.show();
+        }
+
+        if(mFirebaseUser != null){
+            adminPart();
         }
     }
 

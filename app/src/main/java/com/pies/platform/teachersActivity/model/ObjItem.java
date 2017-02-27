@@ -97,8 +97,8 @@ public class ObjItem {
         HashMap<String, Object> result = new HashMap<>();
         result.put("subject", subject);
         result.put("topic", topic);
-        result.put("objectives", objective);
-        result.put("time", sent_time);
+        result.put("objective", objective);
+        result.put("sent_time", sent_time);
         result.put("date", date);
         result.put("author", author);
         result.put("day", day);

@@ -99,7 +99,7 @@ public class Admin_dashboardFragment extends Fragment {
                 }
                 else{ String n = mFirebaseUser.getEmail();
                     tEmail.setText(n);
-                    Toast.makeText(getActivity(), mFirebaseUser.getUid().toString(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getActivity(), mFirebaseUser.getUid().toString(), Toast.LENGTH_SHORT).show();
                     String url = mFirebaseUser.getUid().toString();
                     checkUser(url);
                     if( mFirebaseUser.getPhotoUrl() != null){
@@ -232,7 +232,7 @@ prepareMovieData();
      Admin_data item = dataSnapshot.getValue(Admin_data.class);
                 if(item.getName() != null){
                     aNam = item.getName();
-                    Toast.makeText(getActivity(), aNam, Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getActivity(), aNam, Toast.LENGTH_SHORT).show();
                     tName.setText(aNam);
                 }
 

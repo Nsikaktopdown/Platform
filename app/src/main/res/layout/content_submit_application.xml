@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#eeeeee"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="ng.com.pies.SubmitApplication"
+        tools:showIn="@layout/activity_submit_application">
+        <RelativeLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp">
+
+
+                    <!-- Name Label -->
+
+                    <EditText android:id="@+id/apply_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:padding="17dp"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/edit_two"
+                        android:hint="Name"
+                        android:layout_marginBottom="7dp"/>
+
+
+
+                    <EditText android:id="@+id/apply_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="17dp"
+                        android:background="@drawable/edit_two"
+                        android:inputType="textEmailAddress"
+                        android:layout_marginBottom="7dp"
+                        android:hint="Email" />
+
+
+
+                    <EditText android:id="@+id/apply_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="17dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/edit_two"
+                        android:inputType="number"
+                        android:hint="Phone"/>
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/apply_upload"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="17dp"
+                        android:textColor="#009688"
+                        android:background="@drawable/edit_two"
+                        android:text="Upload CV"/>
+
+
+                    <!-- Signup Button -->
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/apply_button"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="37dp"
+                        android:padding="12dp"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:enabled="false"
+
+                        android:background="@color/colorPrimary"
+                        android:text="Apply"/>
+
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

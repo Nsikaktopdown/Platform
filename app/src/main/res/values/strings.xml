@@ -67,5 +67,6 @@
     <string name="title_activity_create__obj">Create</string>
     <string name="title_activity_teacher__request">Teacher Request</string>
     <string name="title_activity_objectives__details">Objectives Details</string>
+    <string name="title_activity_submit_application">Submit Application</string>
 
 </resources>

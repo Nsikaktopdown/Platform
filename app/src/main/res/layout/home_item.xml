@@ -22,7 +22,7 @@
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/thumdicon1"
             android:id="@+id/titleName1"
-            android:textSize="21sp"
+            android:textSize="19sp"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
